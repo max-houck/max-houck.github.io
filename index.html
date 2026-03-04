@@ -1289,9 +1289,7 @@
       or discussing new opportunities. Feel free to reach out.
     </p>
     <div class="contact-links">
-      <a href="/cdn-cgi/l/email-protection#c4a9a5bcaca7aff5f584a3a9a5ada8eaa7aba9" class="contact-link">
-        ✉ <span class="__cf_email__" data-cfemail="264b475e4e454d171766414b474f4a0845494b">[email&#160;protected]</span>
-      </a>
+      <a id="emailLink" href="#" class="contact-link" onclick="revealEmail(event)">✉ <span id="emailText">Click to reveal email</span></a>
       <a href="https://linkedin.com/in/maxwell-houck" target="_blank" class="contact-link">
         in LinkedIn
       </a>
@@ -1305,10 +1303,30 @@
 <!-- FOOTER -->
 <footer>
   <p>© 2026 <span>Maxwell Houck</span> — Built & Hosted on GitHub Pages</p>
-  <p>Easton, PA &nbsp;·&nbsp; <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="036e627b6b6068323243646e626a6f2d606c6e">[email&#160;protected]</a></span></p>
+  <p>Easton, PA &nbsp;·&nbsp; <span id="footerEmail"></span></p>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── EMAIL (click to reveal) ──
+  const u = 'maxhck11', d = 'gmail.com';
+  const email = u + '@' + d;
+  const footer = document.getElementById('footerEmail');
+  if (footer) footer.textContent = email;
+
+  let revealed = false;
+  function revealEmail(e) {
+    e.preventDefault();
+    const el = document.getElementById('emailLink');
+    const txt = document.getElementById('emailText');
+    if (!revealed) {
+      txt.textContent = email;
+      el.href = 'mailto:' + email;
+      revealed = true;
+    } else {
+      window.location.href = 'mailto:' + email;
+    }
+  }
+
   // ── CURSOR GLOW ──
   const glow = document.getElementById('cursorGlow');
   let mouseX = 0, mouseY = 0;
