@@ -788,12 +788,32 @@
     /* ── MOBILE ── */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1.2rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.65rem; }
       section { padding: 4rem 1.5rem; }
       #hero { padding: 7rem 1.5rem 3rem; }
+      .hero-name { font-size: clamp(2.8rem, 12vw, 5rem); }
+      .hero-title { font-size: 1rem; }
+      .hero-desc { font-size: 0.9rem; }
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; }
       .hero-stats { display: none; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .certs-grid { grid-template-columns: 1fr; }
       .about-inner { grid-template-columns: 1fr; gap: 2.5rem; padding: 0 1.5rem; }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .contact-links { flex-direction: column; align-items: center; }
+      .contact-link, #emailBtn { width: 100%; text-align: center; justify-content: center; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
+      .timeline { padding-left: 1.5rem; }
+      .section-title { font-size: clamp(1.6rem, 6vw, 2.5rem); }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links { gap: 0.6rem; }
+      .nav-links a { font-size: 0.6rem; letter-spacing: 0.04em; }
+      .hero-name { font-size: clamp(2.4rem, 13vw, 3.5rem); }
+      .hero-actions .btn-primary, .hero-actions .btn-secondary { padding: 0.7rem 1.4rem; }
     }
   </style>
 </head>
@@ -824,15 +844,13 @@
     <div class="hero-tag">// IT Engineer & Cybersecurity Professional</div>
     <h1 class="hero-name">
       <span>Maxwell</span>
-      <span>Houck.</span>
+      <span>Houck</span>
     </h1>
     <div class="hero-title">
       Endpoint Security &nbsp;·&nbsp; <span class="highlight">Cloud Infrastructure</span> &nbsp;·&nbsp; IT Automation
     </div>
     <p class="hero-desc">
-      IT professional focused on endpoint management, security, and automation.
-      I enjoy solving real problems — whether that's keeping devices in check with Intune and Jamf,
-      tightening up security posture, or scripting away the repetitive work so the team can focus on what matters.
+      IT professional focused on endpoint management, security, and automation. I enjoy solving real problems — from maintaining secure and compliant device environments with Intune and Jamf, to strengthening security posture and developing automation that improves efficiency across the team.
     </p>
     <div class="hero-actions">
       <a href="#journey" class="btn-primary">View My Journey</a>
@@ -1101,7 +1119,7 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-label">// 03 — Projects</div>
-  <h2 class="section-title">Things I've <span>Built</span></h2>
+  <h2 class="section-title">Projects I've <span>Built</span></h2>
 
   <div class="projects-grid">
 
@@ -1241,7 +1259,7 @@
         My day-to-day involves keeping endpoints secure, automating the repetitive stuff away,
         and making sure the systems people rely on stay running. I care a lot about
         <strong>doing things right</strong> — clean policies, proper compliance, and infrastructure
-        that doesn't break at 2am.
+        that doesn't break.
       </p>
       <p>
         Outside of work I'm focused on growing my cloud and security knowledge —
@@ -1253,7 +1271,7 @@
     <div class="about-details">
       <div class="detail-row">
         <span class="detail-label">Location</span>
-        <span class="detail-value">Easton, PA (Remote)</span>
+        <span class="detail-value">Easton, PA</span>
       </div>
       <div class="detail-row">
         <span class="detail-label">Current Role</span>
@@ -1289,7 +1307,7 @@
       or discussing new opportunities. Feel free to reach out.
     </p>
     <div class="contact-links">
-      <a id="emailLink" href="#" class="contact-link" onclick="revealEmail(event)">✉ <span id="emailText">Click to reveal email</span></a>
+      <a href="mailto:maxhck11@gmail.com" class="contact-link">✉ maxhck11@gmail.com</a>
       <a href="https://linkedin.com/in/maxwell-houck" target="_blank" class="contact-link">
         in LinkedIn
       </a>
@@ -1307,26 +1325,6 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ── EMAIL (click to reveal) ──
-  const u = 'maxhck11', d = 'gmail.com';
-  const email = u + '@' + d;
-  const footer = document.getElementById('footerEmail');
-  if (footer) footer.textContent = email;
-
-  let revealed = false;
-  function revealEmail(e) {
-    e.preventDefault();
-    const el = document.getElementById('emailLink');
-    const txt = document.getElementById('emailText');
-    if (!revealed) {
-      txt.textContent = email;
-      el.href = 'mailto:' + email;
-      revealed = true;
-    } else {
-      window.location.href = 'mailto:' + email;
-    }
-  }
-
   // ── CURSOR GLOW ──
   const glow = document.getElementById('cursorGlow');
   let mouseX = 0, mouseY = 0;
